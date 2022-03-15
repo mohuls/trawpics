@@ -1,0 +1,31 @@
+{% extends 'shop/admin/base.html' %}
+
+{% block admin_content %}
+    <section class="panel important">
+        <h2>Basic Website Home Settings</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="twothirds">
+                <label required for="title">Site title:</label>
+                <input required type="text" name="title" id="title" {% if home.title %}value="{{home.title}}"{% endif %} placeholder="Enter site Title" />
+                <label required for="baseline">Baseline:</label>
+                <input required type="text" name="baseline" id="baseline" {% if home.baseline %}value="{{home.baseline}}"{% endif %} placeholder="Enter baseline max 80 char." />
+                <label required for="facebook">Enter Facebook URL:</label>
+                <input required type="text" name="facebook" id="facebook" {% if home.facebook %}value="{{home.facebook}}"{% endif %} placeholder="Enter facebook url" />
+                <label required for="instagram">Enter Instagram URL:</label>
+                <input required type="text" name="instagram" id="instagram" {% if home.instagram %}value="{{home.instagram}}"{% endif %} placeholder="Enter Instagram URL" />
+                <label required for="twitter">Tnter Twitter URL:</label>
+                <input required type="text" name="twitter" id="twitter" {% if home.twitter %}value="{{home.twitter}}"{% endif %} placeholder="Enter twitter URL" />
+                <label required for="vemio">Enter Vimeo URL:</label>
+                <input required type="text" name="vemio" id="vemio" {% if home.vemio %}value="{{home.vemio}}"{% endif %} placeholder="Enter vimeo URL" />
+                <label required for="pinterest">Pinterest URL:</label>
+                <input required type="text" name="pinterest" id="pinterest" {% if home.pinterest %}value="{{home.pinterest}}"{% endif %} placeholder="Enter pinterest URL" />
+            </div>
+            <div class="onethird">
+                <div>
+                    <input type="submit" value="Submit" />
+                </div>
+            </div>
+        </form>
+    </section>
+{% endblock %}

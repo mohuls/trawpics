@@ -1,0 +1,125 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block shopcontent %}
+<div class="wrapper gray-wrapper">
+  <div class="container inner">
+    <h1 class="heading">{{ home.title|safe }}</h1>
+    <p class="lead larger">{{ home.baseline }}</p>
+    <div class="space10"></div>
+    <ul class="social social-mute social-m">
+      <li><a href="{{ home.twitter }}"><i class="fa fa-twitter"></i></a></li>
+      <li><a href="{{ home.facebook }}"><i class="fa fa-facebook-f"></i></a></li>
+      <li><a href="{{ home.pinterest }}"><i class="fa fa-pinterest"></i></a></li>
+      <li><a href="{{ home.vemio }}"><i class="fa fa-vimeo"></i></a></li>
+      <li><a href="{{ home.instagram }}"><i class="fa fa-instagram"></i></a></li>
+    </ul>
+  </div>
+  <!-- /.container --> 
+</div>
+<!-- /.wrapper -->
+<div class="wrapper light-wrapper">
+  <div class="container inner">
+    <h2 class="section-title section-title-upper mb-30">Some of Our Works</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="cocoen"> <img src="{% static 'images/art/ba1.jpg' %}" alt=""> <img src="{% static 'images/art/ba2.jpg' %}" alt=""> </div>
+      </div>
+      <!--/column -->
+      <div class="col-md-6">
+        <div class="cocoen"> <img src="{% static 'images/art/ba3.jpg' %}" alt=""> <img src="{% static 'images/art/ba4.jpg' %}" alt=""> </div>
+      </div>
+      <!--/column -->
+      <div class="space30"></div>
+      <div class="col-md-6">
+        <div class="cocoen"> <img src="{% static 'images/art/ba5.jpg' %}" alt=""> <img src="{% static 'images/art/ba6.jpg' %}" alt=""> </div>
+      </div>
+      <!--/column -->
+      <div class="col-md-6">
+        <div class="cocoen"> <img src="{% static 'images/art/ba7.jpg' %}" alt=""> <img src="{% static 'images/art/ba8.jpg' %}" alt=""> </div>
+      </div>
+      <!--/column -->
+      <div class="space30"></div>
+      <div class="col-md-6">
+        <div class="cocoen"> <img src="{% static 'images/art/ba9.jpg' %}" alt=""> <img src="{% static 'images/art/ba10.jpg' %}" alt=""> </div>
+      </div>
+      <!--/column -->
+      <div class="col-md-6">
+        <div class="cocoen"> <img src="{% static 'images/art/ba11.jpg' %}" alt=""> <img src="{% static 'images/art/ba12.jpg' %}" alt=""> </div>
+      </div>
+      <!--/column --> 
+    </div>
+    <!--/.row --> 
+  </div>
+  <!-- /.container --> 
+</div>
+<!-- /.wrapper -->
+<div class="wrapper gray-wrapper">
+  <div class="container inner">
+    <h2 class="section-title section-title-upper">Our Process</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <figure><img src="{% static 'images/art/about7.jpg' %}" alt="" /></figure>
+      </div>
+      <!--/column -->
+      <div class="space30 d-lg-none d-xl-none"></div>
+      <div class="col-lg-6">
+        <h2 class="sub-heading">Great ideas are made<br />
+          to be experienced</h2>
+        <div class="tabs-wrapper lined">
+          <ul class="nav nav-tabs">
+            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tab1-1">Concept</a> </li>
+          </ul>
+          <!-- /.nav-tabs -->
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="tab1-1">
+              <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vestibulum id ligula porta felis euismod semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+            </div>
+          </div>
+          <!-- /.tab-content --> 
+        </div>
+        <!-- /.tabs-wrapper --> 
+      </div>
+      <!--/column --> 
+    </div>
+    <!--/.row -->
+    <div class="space70"></div>
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="section-title section-title-upper">What is Our Process?</h4>
+        <blockquote class="bordered">
+          <p>Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula lacinia odio sem nec elit. Donec sed odio dui. Curabitur blandit tempus porttitor.</p>
+          <footer class="blockquote-footer">Connor Gibson</footer>
+        </blockquote>
+      </div>
+      <!-- /column -->
+      <div class="col-md-4">
+        <h4 class="section-title section-title-upper">Why Choose Us?</h4>
+        <p>Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus.</p>
+        <ul class="unordered-list list-default">
+          <li>Donec ullamcorper nulla non metus auctor.</li>
+          <li>Cras justo odio, dapibus ac facilisis.</li>
+          <li>Praesent commodo cursus magna.</li>
+          <li>Curabitur blandit tempus porttitor.</li>
+        </ul>
+      </div>
+      <!-- /column -->
+      <div class="col-md-4">
+        <h4 class="section-title section-title-upper">Why Choose Us?</h4>
+        <p>Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus.</p>
+        <ul class="unordered-list list-default">
+          <li>Donec ullamcorper nulla non metus auctor.</li>
+          <li>Cras justo odio, dapibus ac facilisis.</li>
+          <li>Praesent commodo cursus magna.</li>
+          <li>Curabitur blandit tempus porttitor.</li>
+        </ul>
+      </div>
+      <!-- /column --> 
+    </div>
+    <!-- /.row -->
+    <div class="space20"></div>
+    <div class="text-center"><a href="{% url 'stock' %}" class="btn btn-full-rounded">Browse Stock</a></div>
+  </div>
+  <!-- /.container --> 
+</div>
+<!-- /.wrapper -->
+{% endblock %}

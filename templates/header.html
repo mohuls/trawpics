@@ -1,0 +1,36 @@
+{% load static %}
+<nav class="navbar solid nav-wrapper-dark inverse-text navbar-expand-lg">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="navbar-brand"><a href="/"><img src="#" srcset="{% static 'images/logo-light.png' %} 1x, /static/images/logo-light@2x.png 2x" alt="" /></a></div>
+        <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div> 
+      </div>
+      <!-- /.navbar-header -->
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{% url 'stock' %}">Stock</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{% url 'pricing' %}">Pricing</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{% url 'testimonials' %}">Testimonials</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout ({{request.user.username}})</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a href="{% url 'login' %}" style="margin-top: 20px;" class="btn btn-full-rounded">Sign In</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      <!-- /.navbar-collapse --> 
+    </div>
+    <!-- /.container --> 
+  </nav>
+  <!-- /.navbar -->

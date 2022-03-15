@@ -1,0 +1,43 @@
+{% extends 'account/base.html' %}
+
+{% block authcontent %}
+<div class="wrapper light-wrapper">
+    <div class="container inner">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-1 col-xl-6 offset-xl-3">
+          <h2 class="section-title mb-40 text-center">Login to your Account</h2>
+          <form style="padding: 30px" class="gray-wrapper" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" id="usernamew" placeholder="Enter your username">
+              </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password here">
+            </div>
+            <!-- /.form-group -->
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Remember me for 30 days</label>
+              </div>
+            </div>
+            <!-- /.form-group -->
+            <button type="submit" class="btn btn-full-rounded">Sign In</button>
+            <br><br>
+            <p>
+                New to PictureGraphhy? <a href="{% url 'signup' %}">Signup here</a>
+            </p>
+          </form>
+          
+          <!-- /form --> 
+        </div>
+        <!-- /column --> 
+      </div>
+      <!-- /.row --> 
+    </div>
+    <!-- /.container --> 
+  </div>
+  <!-- /.wrapper -->
+{% endblock %}

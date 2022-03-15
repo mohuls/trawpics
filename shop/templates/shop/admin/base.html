@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+</head>
+
+<body>
+    <header role="banner">
+        <h1>Admin Panel</h1>
+        <!-- <ul class="utilities">
+            <li class="users"><a href="#">My Account</a></li>
+            <li class="logout warn"><a href="">Log Out</a></li>
+        </ul> -->
+    </header>
+
+    <nav role="navigation">
+        <ul class="main">
+            <li class="dashboard"><a href="{% url 'admin_area' %}">Site Settings</a></li>
+            <li class="write"><a href="{% url 'admin_stock' %}">Site Stock</a></li>
+            <li class="create"><a href="{% url 'admin_order' %}">Orders</a></li>
+            <!-- <li class="comments"><a href="#">Comments</a></li>
+            <li class="users"><a href="#">Manage Users</a></li> -->
+        </ul>
+    </nav>
+    <main role="main">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'warning' %}
+                    <section class="panel important feedback">
+                        {{message}}
+                    </section>
+                {% elif message.tags == 'error' %}
+                    <section class="panel important feedback error">
+                        {{message}}
+                    </section>
+                {% elif message.tags == 'info' %}
+                    <section class="panel important feedback success">
+                        {{message}}
+                    </section>
+                {% elif message.tags == 'success' %}
+                    <section class="panel important feedback success">
+                        {{message}}
+                    </section>
+                {% endif %}
+            {% endfor %}
+            
+        {% endif %}
+        {% block admin_content %}{% endblock %}
+    </main>
+</body>
+
+</html>

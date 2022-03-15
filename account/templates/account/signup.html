@@ -1,0 +1,60 @@
+{% extends 'account/base.html' %}
+
+{% block authcontent %}
+<div class="wrapper light-wrapper">
+    <div class="container inner">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-1 col-xl-6 offset-xl-3">
+          <h2 class="section-title mb-40 text-center">Create a new Account</h2>
+          <form style="padding: 30px" class="gray-wrapper" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" class="form-control" id="fname" name="first" placeholder="Enter your first name">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" class="form-control" id="lname" name="last" placeholder="Enter your last name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+                    </div>
+                </div>
+              </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+            </div>
+            <!-- /.form-group -->
+            <button type="submit" class="btn btn-full-rounded">Sign Up</button>
+            <br><br>
+            <p>
+                Already have an account? <a href="{% url 'login' %}">Login here</a>
+            </p>
+          </form>
+          
+          <!-- /form --> 
+        </div>
+        <!-- /column --> 
+      </div>
+      <!-- /.row --> 
+    </div>
+    <!-- /.container --> 
+  </div>
+  <!-- /.wrapper -->
+{% endblock %}

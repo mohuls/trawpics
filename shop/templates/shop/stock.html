@@ -1,0 +1,65 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block shopcontent %}
+<div class="wrapper image-wrapper bg-image inverse-text" data-image-src="/static/images/art/bg8.jpg">
+    <div class="container inner pt-120 pb-120 text-center">
+      <h1 class="heading mb-0">PictureGraphy Stock</h1>
+    </div>
+    <!-- /.container --> 
+  </div>
+  <!-- /.wrapper -->
+  <div class="wrapper light-wrapper">
+    <div class="container inner">
+      <div class="row d-flex align-items-center mb-30">
+        <div class="col-md-6 col-lg-6">
+          <p class="mb-0">{{ items.count }} results</p>
+        </div>
+        <!--/column -->
+        <div class="col-md-4 offset-md-2 col-lg-3 offset-lg-3 text-right">
+          <div class="form-group custom-select-wrapper mb-0">
+            <form>
+            <select onchange="this.form.submit()" name="category" class="custom-select">
+              {% if current %}
+              <option value="{{ current }}" selected="selected">{{ current }}</option>
+              {% else %}
+              <option disabled selected="selected">Select Category</option>
+              {% endif %}
+              {% for category in categories %}
+              <option value="{{category.name}}">{{ category.name }}</option>
+              {% endfor %}
+            </select>
+            </form>
+          </div>
+        </div>
+        <!--/column --> 
+      </div>
+      <!--/.row -->
+      <div class="blog grid grid-view text-center">
+        <div class="row isotope">
+          {% for item in items %}
+          <div class="item post grid-sizer col-md-6 col-lg-4 col-xl-3">
+            <figure class="overlay overlay1 mb-20"><a href="/item/{{item.id}}/"><img src="{{item.preview.url}}" alt="" /></a>
+              <figcaption class="d-flex">
+                <div class="align-self-center mx-auto">
+                  <h5 class="mb-0">View Item</h5>
+                </div>
+              </figcaption>
+            </figure>
+            <div class="post-content pl-10 pr-10">
+              <h2 class="post-title mb-0"><a href="/item/{{item.id}}/">{{ item.name }}</a></h2>
+            </div>
+            <!-- /.post-content --> 
+          </div>
+          <!-- /.post -->
+          {% endfor %}
+        </div>
+        <!-- /.row --> 
+      </div>
+      <!-- /.blog -->
+      <div class="space30 d-md-none"></div>
+      <!-- /.pagination --> 
+    </div>
+    <!-- /.container --> 
+  </div>
+  <!-- /.wrapper -->
+{% endblock %}

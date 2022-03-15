@@ -1,0 +1,33 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block shopcontent %}
+<div class="wrapper light-wrapper">
+    <div class="container inner">
+        <h2 class="section-title mb-40 text-center">Most Recent Testimonials</h2>
+        <div class="swiper-container-wrapper swiper-col3" data-aos="fade">
+            <div class="swiper-container text-center">
+                <div class="swiper-wrapper">
+                    {% for r in reviews %}
+                    <div class="swiper-slide">
+                        <div class="box box-border">
+                            <blockquote class="icon icon-top">
+                                <p>{{r.review}}</p>
+                                <footer class="blockquote-footer">{{ r.reviewer.username }}</footer>
+                            </blockquote>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.swiper-slide -->
+                    {% endfor %}
+                </div>
+                <!-- /.swiper-wrapper -->
+            </div>
+            <!-- .swiper-container -->
+            <div class="swiper-pagination gap-large"></div>
+        </div>
+        <!-- .swiper-container-wrapper -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.wrapper -->
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'shop/admin/base.html' %}
+
+{% block admin_content %}
+
+<section class="panel ">
+    <h2>Create Categories</h2>
+    <form method="POST" style="padding: 0 20px">
+        {% csrf_token %}
+        <label for="new_category">Category name:</label>
+        <input type="text" name="new_category" required id="new_category" placeholder="Enter category name" />
+        <div>
+            <input type="submit" value="Create" />
+        </div>
+    </form>
+</section>
+<section class="panel">
+    <h2>Stock Categories</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Items</th>
+            <th>Added on</th>
+            <th>Action</th>
+        </tr>
+        {% for category in categories %}
+        <tr>
+            <td>{{category.name}}</td>
+            <td>4</td>
+            <td>{{ category.at.date }}</td>
+            <td>Delete</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+<section class="panel important">
+    <h2>Upload new Stock Item</h2>
+    <form  enctype="multipart/form-data" method="POST" >
+        {% csrf_token %}
+        <div class="twothirds">
+            <label for="name">Item Name:</label>
+            <input type="text" name="name" required id="name" placeholder="Enter Item Name" />
+            <label for="description">Short Description:</label>
+            <textarea cols="40" rows="8" name="description" required id="description" placeholder="Max 72 char."></textarea>
+            <label for="detail">Textarea:</label>
+            <textarea cols="40" rows="8" name="detail" required id="detail" placeholder="Max 2048 char"></textarea>
+        </div>
+        <div class="onethird">
+            <label for="select-choice">Select Item Category:</label>
+            <select name="category" required id="select-choice">
+                <option selected value="">Select a Category</option>
+                {% for c in categories %}
+                <option value="{{c.id}}">{{ c.name }}</option>
+                {% endfor %}
+            </select>
+            <label for="preview">Select Item Preview (600x500):</label>
+            <input type="file" name="preview" id="preview" required />
+            <label for="work">Upload actual work (eg: zip file):</label>
+            <input type="file" name="work" id="work" required />
+            <label for="license">Upload license file (eg: txt file):</label>
+            <input type="file" name="license" id="license" required />
+
+            <div>
+                <input type="submit" value="Upload Item" />
+            </div>
+        </div>
+    </form>
+</section>
+<section class="panel important">
+    <h2>Stock Items</h2>
+    <table>
+        <tr>
+            <th>Item name</th>
+            <th>Work file</th>
+            <th>Added on</th>
+            <th>Action</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td><a href="{{ item.download.url }}">Download</a></td>
+            <td>{{ item.at }}</td>
+            <td>Delete</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

@@ -1,0 +1,284 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block shopcontent %}
+<script src="https://www.paypal.com/sdk/js?client-id=AXmAy8BtRMfC5owqzo2Uu-UCOD0cHLGXHLAPofKAlLSgphdlh2IRYqpObwfEy94mykOpFwVsmx97zBlo&currency=USD&disable-funding=card,venmo,paylater"></script>
+<div class="wrapper light-wrapper">
+    <div class="container inner">
+        {% if is_purchased %}
+        <div class="alert alert-primary" role="alert"> You have a currently active {% if is_purchased.paid == 35 %}Pro{% elif is_purchased.paid == 25 %}Creator{% elif is_purchased.paid == 10 %}Basic{% endif  %} plan purchased. <a href="{% url 'stock' %}" class="alert-link">Start Downloading Premium Assets</a>.</div>
+        {% endif %}
+        <h2 class="section-title text-center">Our Prices</h2>
+        <p class="lead text-center">Awesome deals with simple pricing model are here! We offer great prices,<br />
+            premium products and unlimited downloads available.</p>
+        <div class="space30"></div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="pricing panel box box-border">
+                    <div class="panel-heading">
+                        <h4 class="panel-title color-dark pb-0">Basic Plan</h4>
+                        <div class="price color-dark"> <span class="price-currency">$</span><span
+                                class="price-value">10</span> <span class="price-duration">month</span></div>
+                    </div>
+                    <!--/.panel-heading -->
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <td><strong>1</strong> Organization </td>
+                            </tr>
+                            <tr>
+                                <td><strong>10K</strong> Downloads per month </td>
+                            </tr>
+                            <tr>
+                                <td><strong>1000MB</strong> Cloud Storage </td>
+                            </tr>
+                            <tr>
+                                <td> Lifetime <strong>Licensing</strong></td>
+                            </tr>
+                            <tr>
+                                <td> License <strong>provided</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1-Click</strong> Downloads</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--/.panel-body -->
+                    <br>
+                    {% if user.is_authenticated %}
+                        {% if not is_purchased %}
+                        <div id="paypal-button-container-basic"></div>
+                        {% else %}
+                        <div class="panel-footer"> <button disabled disabled class="btn btn-full-rounded mb-10" role="button">Already Purchased</button>
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="panel-footer"> <a href="/auth/login/" class="btn btn-full-rounded mb-10" role="button">Login to Buy</a>
+                        </div>
+                    {% endif %}
+                </div>
+                <!--/.pricing -->
+            </div>
+            <!--/column -->
+            <div class="col-md-4">
+                <div class="pricing panel box box-border">
+                    <div class="panel-heading">
+                        <h4 class="panel-title color-dark pb-0">Creator Plan</h4>
+                        <div class="price color-dark"> <span class="price-currency">$</span><span
+                                class="price-value">25</span> <span class="price-duration">month</span></div>
+                    </div>
+                    <!--/.panel-heading -->
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <td><strong>5</strong> Organization </td>
+                            </tr>
+                            <tr>
+                                <td><strong>50K</strong> Downloads per month </td>
+                            </tr>
+                            <tr>
+                                <td><strong>10GB</strong> Cloud Storage </td>
+                            </tr>
+                            <tr>
+                                <td> Lifetime <strong>Licensing</strong></td>
+                            </tr>
+                            <tr>
+                                <td> License <strong>provided</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1-Click</strong> Downloads</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--/.panel-body -->
+                    <br>
+                    {% if user.is_authenticated %}
+                        {% if not is_purchased %}
+                        <div id="paypal-button-container-creator"></div>
+                        {% else %}
+                        <div class="panel-footer"> <button disabled disabled class="btn btn-full-rounded mb-10" role="button">Already Purchased</button>
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="panel-footer"> <a href="/auth/login/" class="btn btn-full-rounded mb-10" role="button">Login to Buy</a>
+                        </div>
+                    {% endif %}
+                    <!-- <div class="panel-footer"> <a href="#" class="btn btn-full-rounded mb-10" role="button">Buy Now</a></div> -->
+                </div>
+                <!--/.pricing -->
+            </div>
+            <!--/column -->
+            <div class="col-md-4">
+                <div class="pricing panel box box-border">
+                    <div class="panel-heading">
+                        <h4 class="panel-title color-dark pb-0">Pro Plan</h4>
+                        <div class="price color-dark"> <span class="price-currency">$</span><span
+                                class="price-value">35</span> <span class="price-duration">month</span></div>
+                    </div>
+                    <!--/.panel-heading -->
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <td><strong>Unlimited</strong> Organization </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Unlimited</strong> Downloads per month </td>
+                            </tr>
+                            <tr>
+                                <td><strong>200GB</strong> Cloud Storage </td>
+                            </tr>
+                            <tr>
+                                <td> Lifetime <strong>Licensing</strong></td>
+                            </tr>
+                            <tr>
+                                <td> License <strong>provided</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1-Click</strong> Downloads</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--/.panel-body -->
+                    <br>
+                    {% if user.is_authenticated %}
+                        {% if not is_purchased %}
+                        <div id="paypal-button-container-pro"></div>
+                        {% else %}
+                        <div class="panel-footer"> <button disabled disabled class="btn btn-full-rounded mb-10" role="button">Already Purchased</button>
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="panel-footer"> <a href="/auth/login/" class="btn btn-full-rounded mb-10" role="button">Login to Buy</a>
+                        </div>
+                    {% endif %}
+                    <!-- <div class="panel-footer"> <a href="#" class="btn btn-full-rounded mb-10" role="button">BUY NOW</a>
+                    </div> -->
+                </div>
+                <!--/.pricing -->
+            </div>
+            <!--/column -->
+        </div>
+        <!--/.row -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.wrapper -->
+<div class="wrapper gray-wrapper">
+    <div class="container inner">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="swiper-container-wrapper basic-slider">
+                    <div class="swiper-container text-center">
+                        {% if reviews %}
+                        <div class="swiper-wrapper">
+                            {% for r in reviews %}
+                            <div class="swiper-slide">
+                                <blockquote class="icon icon-top larger">
+                                    <p>{{r.review}}</p>
+                                    <footer class="blockquote-footer">{{ r.reviewer.username }}</footer>
+                                </blockquote>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!-- /.swiper-wrapper -->
+                        {% else %}
+                            No reviews yet
+                        {% endif %}
+                    </div>
+                    <!-- /.swiper-container -->
+                    <div class="swiper-pagination gap-small"></div>
+                </div>
+                <!-- .swiper-container-wrapper -->
+            </div>
+            <!-- /column -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.wrapper -->
+<script>
+    paypal.Buttons({
+        style: {
+            layout: 'vertical',
+            color: 'blue',
+            shape: 'pill',
+            label: 'pay'
+        },
+        // Sets up the transaction when a payment button is clicked
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '10' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+                    }
+                }]
+            });
+        },
+        // Finalize the transaction after payer approval
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (orderData) {
+                // Successful capture! For dev/demo purposes:
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                var transaction = orderData.purchase_units[0].payments.captures[0];
+                window.location.href=`?status=${transaction.status}&transaction_id=${transaction.id}&plan=Basic`
+            });
+        }
+    }).render('#paypal-button-container-basic');
+    paypal.Buttons({
+        style: {
+            layout: 'vertical',
+            color: 'blue',
+            shape: 'pill',
+            label: 'pay'
+        },
+        // Sets up the transaction when a payment button is clicked
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '25' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+                    }
+                }]
+            });
+        },
+        // Finalize the transaction after payer approval
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (orderData) {
+                // Successful capture! For dev/demo purposes:
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                var transaction = orderData.purchase_units[0].payments.captures[0];
+                window.location.href=`?status=${transaction.status}&transaction_id=${transaction.id}&plan=Creator`
+            });
+        }
+    }).render('#paypal-button-container-creator');
+
+    paypal.Buttons({
+        style: {
+            layout: 'vertical',
+            color: 'blue',
+            shape: 'pill',
+            label: 'pay'
+        },
+        // Sets up the transaction when a payment button is clicked
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '35' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+                    }
+                }]
+            });
+        },
+        // Finalize the transaction after payer approval
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (orderData) {
+                // Successful capture! For dev/demo purposes:
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                var transaction = orderData.purchase_units[0].payments.captures[0];
+                window.location.href=`?status=${transaction.status}&transaction_id=${transaction.id}&plan=Pro`
+            });
+        }
+    }).render('#paypal-button-container-pro');
+
+</script>
+{% endblock %}

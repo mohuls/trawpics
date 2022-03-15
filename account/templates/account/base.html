@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="text" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+<title>Brailie</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/plugins.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'revolution/css/settings.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'revolution/css/layers.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'revolution/css/navigation.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'revolution/revolution-addons/filmstrip/css/revolution.addon.filmstrip.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'revolution/revolution-addons/typewriter/css/typewriter.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'type/icons.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/color/blue.css' %}">
+<link href='https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div class="page-loading">
+  <div class="status">
+    <div class="spinner"></div>
+  </div>
+</div>
+<div class="content-wrapper">
+  {% include 'header.html' %}
+  {% if messages %}
+    {% include 'message.html' %}
+  {% endif %}
+  {% block authcontent %}{% endblock %}
+  {% include 'footer.html' %}
+</div>
+<!-- /.content-wrapper --> 
+<script src="{% static 'js/jquery.min.js' %}"></script> 
+<script src="{% static 'js/popper.min.js' %}"></script> 
+<script src="{% static 'js/bootstrap.min.js' %}"></script> 
+<script src="{% static 'revolution/js/jquery.themepunch.tools.min.js' %}"></script> 
+<script src="{% static 'revolution/js/jquery.themepunch.revolution.min.js' %}"></script> 
+<script src="{% static 'revolution/revolution-addons/filmstrip/js/revolution.addon.filmstrip.min.js' %}"></script> 
+<script src="{% static 'revolution/revolution-addons/typewriter/js/revolution.addon.typewriter.min.js' %}"></script> 
+<script src="{% static 'js/plugins.js' %}"></script> 
+<script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

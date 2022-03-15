@@ -1,0 +1,21 @@
+{% extends 'shop/admin/base.html' %}
+
+{% block admin_content %}
+<section class="panel important">
+    <h2>All Orders</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Active Plan</th>
+            <th>Expires</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.user.username }}</td>
+            <td>{% if order.paid == 35 %}Pro{% elif order.paid == 25 %}Creator{% elif order.paid == 10 %}Basic{% endif  %}</td>
+            <td>{{ order.expires }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

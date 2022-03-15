@@ -1,0 +1,151 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block shopcontent %}
+<div class="wrapper light-wrapper">
+    <div class="container inner">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="swiper-container-wrapper basic-slider">
+                    <div class="swiper-container text-center">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <figure><img src="{{ item.preview.url }}" alt="" /></figure>
+                            </div>
+                            <!-- /.swiper-slide -->
+                        </div>
+                        <!-- /.swiper-wrapper -->
+                    </div>
+                    <!-- /.swiper-container -->
+                    <div class="swiper-pagination gap-large"></div>
+    
+                </div>
+                <!-- /.swiper-container-wrapper -->
+            </div>
+            <!-- /column -->
+            <div class="space60 d-lg-none"></div>
+            <aside class="col-lg-6 sidebar">
+                <h1 class="post-title">{{ item.name }}</h1>
+                <!-- /.meta -->
+                <p>{{ item.description }}</p>
+                <div class="space20"></div>
+                <!-- <ul class="list-unstyled item-details product">
+                    <li class="d-flex align-items-center"><strong class="color-dark">Size:</strong>
+                        <div class="form-group custom-select-wrapper mb-0">
+                            <select class="custom-select">
+                                <option value="xs" selected="selected">XS</option>
+                                <option value="s">S</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                                <option value="xl">XL</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="d-flex align-items-center"><strong class="color-dark">Quantity:</strong>
+                        <div class="form-group product-quantity">
+                            <input type="button" value="-" class="qtyminus" />
+                            <input type="text" name='quantity' value='0' class="qty" />
+                            <input type="button" value="+" class="qtyplus" />
+                        </div>
+                    </li>
+                </ul> -->
+                {% if is_purchased %}
+                <a href="{{ item.download.url }}" class="btn btn-full-rounded">Download Now</a>
+                {% else %}
+                <a href="{% url 'pricing' %}" class="btn btn-full-rounded">Purchase plan to Download</a>
+                {% endif %}
+            </aside>
+            <!-- /.sidebar -->
+        </div>
+        <!-- /.row -->
+        <div class="space60"></div>
+        <div class="tabs-wrapper lined">
+            <ul class="nav nav-tabs">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tab1-1">Product Details</a>
+                </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab1-3">Reviews ({{ reviews.count }})</a> </li>
+            </ul>
+            <!-- /.nav-tabs -->
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="tab1-1">
+                    <p>{{ item.detail }}</p>
+                    <!-- /.btn-group -->
+                </div>
+                <div class="tab-pane fade" id="tab1-3">
+                    <div id="comments">
+                        {% if reviews %}
+                        <ol id="singlecomments" class="commentlist">
+                            {% for r in reviews %}
+                            <li>
+                                <div class="message">
+                                    
+                                    <div class="message-inner">
+                                        <div class="info">
+                                            <h6><a href="#">{{ r.reviewer.username }}</a></h6>
+                                            <div class="meta"> <span class="date">{{ r.at }}</span></div>
+                                        </div>
+                                        <p>{{ r.review }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                        {% else %}
+                        No review yet
+                        {% endif %}
+                    </div>
+                    <div>
+                        <form method="POST" style="margin: 40px 20px 0 89px">
+                            {% csrf_token %}
+                            <textarea required placeholder="Enter your review here" name="review"></textarea>
+                            <button type="submit" class="btn btn-l">POST Review</button>
+                        </form>
+                    </div>
+                    <!-- /#comments -->
+                </div>
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- /.tabs-wrapper -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.wrapper -->
+<div class="wrapper gray-wrapper">
+    <div class="container inner">
+        <h2 class="section-title mb-30 text-center">Things You Might Like</h2>
+        <div class="swiper-container-wrapper image-grid swiper-col3-20" data-aos="fade">
+            <div class="swiper-container text-center">
+                <div class="swiper-wrapper">
+                    {% if items %}
+                        {% for item in items %}
+                        <div class="swiper-slide">
+                            <figure class="overlay overlay1 mb-20"><a href="/item/{{ item.id }}/"><img src="/static/images/art/sp1.jpg"
+                                        alt="" /></a>
+                                <figcaption class="d-flex">
+                                    <div class="align-self-center mx-auto">
+                                        <h5 class="mb-0">View Item</h5>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                            <div class="post-content pl-10 pr-10">
+                                <h2 class="post-title mb-0"><a href="/item/{{ item.id }}/">{{ item.name }}</a></h2>
+                            </div>
+                            <!-- /.post-content -->
+                        </div>
+                        <!--/.swiper-slide -->
+                        {% endfor %}
+                    {% else %}
+                    No recomendations found!
+                    {% endif %}
+                </div>
+                <!-- /.swiper-wrapper -->
+            </div>
+            <!-- .swiper-container -->
+            <div class="swiper-pagination gap-large"></div>
+        </div>
+        <!-- .swiper-container-wrapper -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.wrapper -->
+{% endblock %}
